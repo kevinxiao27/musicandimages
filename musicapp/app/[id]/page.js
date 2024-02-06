@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { searchQuery } from "../utils/apiUtils";
+import MusicPlayer from "../components/MusicPlayer";
 import Image from "next/image";
 
 const Page = () => {
@@ -26,7 +27,7 @@ const Page = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading ...</div>;
+    return <div className="mx-auto w-[50vw]">Loading ...</div>;
   }
 
   console.log(imageUrls);
@@ -34,7 +35,7 @@ const Page = () => {
     <div>
       <h1>Results for: {id}</h1>
       <div className="flex flex-col justify-center items-center">
-        {songUrl}
+        {songUrl && <MusicPlayer embedUrl={songUrl} />}
         {imageUrls.map((url) => (
           <Image src={url} height={300} width={300} />
         ))}
