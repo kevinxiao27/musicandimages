@@ -2,14 +2,22 @@
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { searchQuery } from "../utils/apiUtils";
-import MusicPlayer from "../components/MusicPlayer";
+import { useRef } from "react";
 import Image from "next/image";
 
 const Page = () => {
+  const audioRef = useRef();
   const id = usePathname().substring(1);
   const [loading, setLoading] = useState(true);
   const [imageUrls, setImageUrls] = useState([]);
-  const [songUrl, setSongUrl] = useState("");
+  const [songUrl, setSongUrl] = useState("a");
+  const play = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    } else {
+      // Throw error
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,12 +38,12 @@ const Page = () => {
     return <div className="mx-auto w-[50vw]">Loading ...</div>;
   }
 
-  console.log(imageUrls);
+  play();
   return (
     <div>
       <h1>Results for: {id}</h1>
       <div className="flex flex-col justify-center items-center">
-        {songUrl && <MusicPlayer embedUrl={songUrl} />}
+        <audio ref={audioRef} src={songUrl} />
         {imageUrls.map((url) => (
           <Image src={url} height={300} width={300} />
         ))}
