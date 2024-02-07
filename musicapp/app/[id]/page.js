@@ -2,22 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { searchQuery } from "../utils/apiUtils";
-import { useRef } from "react";
-import Image from "next/image";
+import Slider from "../components/Slider";
 
 const Page = () => {
-  const audioRef = useRef();
   const id = usePathname().substring(1);
   const [loading, setLoading] = useState(true);
   const [imageUrls, setImageUrls] = useState([]);
   const [songUrl, setSongUrl] = useState("a");
-  const play = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
-    } else {
-      // Throw error
-    }
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,22 +25,20 @@ const Page = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    play();
-  });
-
   if (loading) {
-    return <div className="mx-auto w-[50vw]">Loading ...</div>;
-  }
-  return (
-    <div>
-      <h1>Results for: {id}</h1>
-      <div className="flex flex-col justify-center items-center">
-        <audio ref={audioRef} src={songUrl} />
-        {imageUrls.map((url) => (
-          <Image src={url} height={300} width={300} />
-        ))}
+    return (
+      <div className="bg-black">
+        <div className="mx-auto w-[50vw]">Loading ...</div>
       </div>
+    );
+  }
+
+  return (
+    <div className="bg-black h-[100vh]">
+      {/* <div className="invisible"> */}
+      <audio loop autoPlay src={songUrl} />
+      {/* </div> */}
+      <Slider imageUrls={imageUrls} />
     </div>
   );
 };
