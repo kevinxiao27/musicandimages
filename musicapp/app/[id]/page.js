@@ -34,11 +34,13 @@ const Page = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    play();
+  });
+
   if (loading) {
     return <div className="mx-auto w-[50vw]">Loading ...</div>;
   }
-
-  play();
   return (
     <div>
       <h1>Results for: {id}</h1>
