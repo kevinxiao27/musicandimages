@@ -50,7 +50,7 @@ const Slider = ({ data }) => {
   return (
     <div className="w-[60vw] lg:w-[30vw] h-[85vh] bg-[#252525] m-auto lg:rounded-[3rem] rounded-[1rem] mr-2">
       <div className="absolute hidden">
-        <audio controls loop ref={songRef} src={songUrl} />
+        <audio controls loop autoPlay ref={songRef} src={songUrl} />
       </div>
       <div className="w-full top-0 pt-5 overflow-hidden text-nowrap h-full text-white text-[2.5rem] font-roboto font-extrabold flex flex-col justify-start items-center">
         <p className="pl-2 w-5/6 mr-2">{id}</p>
