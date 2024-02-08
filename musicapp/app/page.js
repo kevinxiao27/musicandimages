@@ -48,8 +48,8 @@ export default function Home() {
         </form>
         <div className="absolute bottom-[20vh] left-[35vw]">
           <div className="w-[30rem] flex flex-col justify-center items-center">
-            <p className="text-center font-roboto text-white">
-              This was made for a technical assessment.
+            <p className="text-center font-roboto text-gray-600">
+              This was made for a technical assessment. Made by Kevin Xiao.
             </p>
           </div>
         </div>
