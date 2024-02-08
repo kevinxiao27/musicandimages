@@ -7,7 +7,7 @@ import header from "../assets/header.svg";
 import Image from "next/image";
 
 const Page = () => {
-  const id = usePathname().substring(1);
+  const id = decodeURI(usePathname().substring(1));
   const [loading, setLoading] = useState(true);
   const [imageUrls, setImageUrls] = useState([]);
   const [songUrl, setSongUrl] = useState("a");
@@ -20,7 +20,7 @@ const Page = () => {
         setSongUrl(data[0]);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.log("Error fetching data:", error);
       }
     };
 
@@ -32,7 +32,7 @@ const Page = () => {
       <div className="bg-gradient-to-b from-[#2e1956] to-black bg-cover">
         <div className="absolute top-3 left-3">
           <a href="./">
-            <Image width={200} height={200} src={header} />
+            <Image width={200} height={200} src={header} alt="header" />
           </a>
         </div>
         <div className="absolute top-[50vh] left-[25vw] animate-pulse text-center w-[50vw] font-roboto text-[#dddddd]">
@@ -49,10 +49,9 @@ const Page = () => {
           <Image width={200} height={200} src={header} />
         </a>
       </div>
-      <div className="invisible">
-        <audio controls loop autoPlay src={songUrl} />
+      <div className="absolute top-[10vh] lg:left-[35vw] left-[20vw]">
+        <Slider data={{ imageUrls, id, songUrl }} />
       </div>
-      <Slider imageUrls={imageUrls} />
     </div>
   );
 };

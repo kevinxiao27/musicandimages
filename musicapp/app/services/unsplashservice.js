@@ -14,6 +14,5 @@ export const searchImages = async (query) => {
     return imageUrls;
   } catch (error) {
     console.error("Error fetching images:", error);
-    throw error;
   }
 };

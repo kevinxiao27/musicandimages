@@ -9,6 +9,7 @@ export const searchQuery = async (query) => {
     const imageUrls = await searchImages(query);
     return [musicUrl, imageUrls];
   } catch (error) {
+    handleDeezerError(error.code);
     handleUnsplashError(error.code);
   }
 };
@@ -23,9 +24,9 @@ export const handleDeezerError = (errorCode) => {
       errorMessage = "Invalid API request";
       break;
     default:
-      errorMessage = "An error occurred while fetching data from Deezer";
+      errorMessage = "Your song had no results";
   }
-  throw new Error(errorMessage);
+  console.log(errorMessage);
 };
 
 // Function to handle errors for the Unsplash API
@@ -42,10 +43,6 @@ export const handleUnsplashError = (errorCode) => {
     default:
       errorMessage = "An error occurred while fetching data from Deezer";
   }
-  console.error(
-    "An error occurred while fetching data from Deezer:",
-    errorMessage
-  );
   // Throw the error to be caught and handled by the caller
-  throw new Error(errorMessage);
+  console.log(errorMessage);
 };
