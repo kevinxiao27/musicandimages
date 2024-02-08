@@ -16,7 +16,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#2e1956] to-black bg-cover">
+    <div className="bg-gradient-to-b from-[#2e1956] to-black bg-cover w-screen h-screen">
       <div className="absolute top-3 left-3">
         <a href="./">
           <Image width={200} height={200} src={header} />
@@ -48,7 +48,7 @@ export default function Home() {
         </form>
         <div className="absolute bottom-[20vh] left-[35vw]">
           <div className="w-[30rem] flex flex-col justify-center items-center">
-            <p className="text-center font-roboto text-gray-600">
+            <p className="text-center font-roboto text-gray-600 sm:flex hidden">
               This was made for a technical assessment. Made by Kevin Xiao.
             </p>
           </div>

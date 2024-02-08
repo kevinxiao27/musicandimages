@@ -49,7 +49,7 @@ const Page = () => {
           <Image width={200} height={200} src={header} />
         </a>
       </div>
-      <div className="absolute top-[10vh] lg:left-[35vw] left-[20vw]">
+      <div className="absolute top-[15vh] lg:left-[35vw] left-[10vw]">
         <Slider data={{ imageUrls, id, songUrl }} />
       </div>
     </div>

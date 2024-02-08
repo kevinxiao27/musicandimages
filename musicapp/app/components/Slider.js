@@ -44,7 +44,7 @@ const Slider = ({ data }) => {
     slideRef.current.classList.add("fade-anim");
   };
   return (
-    <div className="w-[60vw] lg:w-[30vw] h-[85vh] bg-[#252525] m-auto lg:rounded-[3rem] rounded-[1rem] mr-2">
+    <div className="sm:w-[60vw] w-[80vw] lg:w-[30vw] sm:h-[80vh] h-[80vh] bg-[#252525] m-auto lg:rounded-[3rem] rounded-[1rem] mr-2">
       <div className="absolute hidden">
         <audio controls loop autoPlay ref={songRef} src={songUrl} />
       </div>
