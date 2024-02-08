@@ -1,7 +1,10 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import search from "./assets/search.png";
+import header from "./assets/header.svg";
+import logo from "./assets/logo.svg";
 
 export default function Home() {
   const router = useRouter();
@@ -13,25 +16,43 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-[url(./assets/background-image.jpg)] bg-no-repeat bg-cover">
+    <div className="bg-gradient-to-b from-[#2e1956] to-black bg-cover">
+      <div className="absolute top-3 left-3">
+        <a href="./">
+          <Image width={200} height={200} src={header} />
+        </a>
+      </div>
       <div className="z-[10] h-screen flex">
-        <form className="w-[50vw] h-[20vh] mx-auto my-auto flex flex-col justify-center items-center">
-          <input
-            className="peer w-[15rem] bg-gray-900 text-white placeholder-gray-100 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-white disabled:border-2 transition-all placeholder-shown:border placeholder-shown:border-white-200 placeholder-shown:border-white-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-white-200 focus:border-gray-200"
-            placeholder="Search for your favourite songs..."
-            type="text"
-            onChange={(e) => {
-              setQuery(e.target.value);
-            }}
-          ></input>
-          <button
-            className="mt-3 bg-white w-[5rem] border-radius-0"
-            onClick={handleClick}
-            type="submit"
-          >
-            Search
-          </button>
+        <form className="sm:w-[70vw] lg:w-[50vw] h-[20vh] mx-auto my-auto flex flex-col justify-center items-center">
+          <div className="w-[50vw] my-3 p-3">
+            <Image style={{ objectFit: "contain" }} src={logo} />
+          </div>
+          <div className="relative">
+            <input
+              className="w-[60vw] outline-white outline-1 focused:outline-none focused:border-[1px] focused:border-white text-white rounded-full font-roboto placeholder:text-[#646464] bg-[#292929] px-4 py-4 pl-[5rem]"
+              placeholder="Search for your favourite songs..."
+              type="text"
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
+            ></input>
+            <button type="submit" onClick={handleClick} className="">
+              <Image
+                height={44}
+                width={44}
+                className="absolute left-0 top-0 mt-2 ml-3 hover:scale-105"
+                src={search}
+              />
+            </button>
+          </div>
         </form>
+        <div className="absolute bottom-[20vh] left-[35vw]">
+          <div className="w-[30rem] flex flex-col justify-center items-center">
+            <p className="text-center font-roboto text-white">
+              This was made for a technical assessment.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

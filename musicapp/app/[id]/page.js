@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { searchQuery } from "../utils/apiUtils";
 import Slider from "../components/Slider";
+import header from "../assets/header.svg";
+import Image from "next/image";
 
 const Page = () => {
   const id = usePathname().substring(1);
@@ -27,17 +29,29 @@ const Page = () => {
 
   if (loading) {
     return (
-      <div className="bg-black">
-        <div className="mx-auto w-[50vw]">Loading ...</div>
+      <div className="bg-gradient-to-b from-[#2e1956] to-black bg-cover">
+        <div className="absolute top-3 left-3">
+          <a href="./">
+            <Image width={200} height={200} src={header} />
+          </a>
+        </div>
+        <div className="absolute top-[50vh] left-[25vw] animate-pulse text-center w-[50vw] font-roboto text-[#dddddd]">
+          Loading ...
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-black h-[100vh]">
-      {/* <div className="invisible"> */}
-      <audio loop autoPlay src={songUrl} />
-      {/* </div> */}
+    <div className="bg-gradient-to-b from-[#2e1956] to-black bg-cover h-[100vh]">
+      <div className="absolute top-3 left-3">
+        <a href="./">
+          <Image width={200} height={200} src={header} />
+        </a>
+      </div>
+      <div className="invisible">
+        <audio controls loop autoPlay src={songUrl} />
+      </div>
       <Slider imageUrls={imageUrls} />
     </div>
   );

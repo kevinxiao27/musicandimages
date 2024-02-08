@@ -4,9 +4,7 @@ dotenv.config();
 
 export const searchTrack = async (query) => {
   try {
-    const response = await fetch(
-      `https://api.deezer.com/search?q=track:${query}`
-    );
+    const response = await fetch(`/deezer/search?q=track:${query}`);
     const data = await response.json();
     const trackUrl = data.data[0].preview;
     return trackUrl;
