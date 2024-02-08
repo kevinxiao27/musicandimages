@@ -13,7 +13,6 @@ const Slider = ({ data }) => {
   const imageUrls = data.imageUrls;
   const id = data.id;
   const songUrl = data.songUrl;
-  let slideInterval;
 
   const slideRef = useRef();
   const songRef = useRef();
@@ -22,7 +21,7 @@ const Slider = ({ data }) => {
     slideRef.current.classList.remove("fade-anim");
   };
   const startSlider = () => {
-    slideInterval = setInterval(() => {
+    setInterval(() => {
       handleOnNextClick();
     }, 3000);
   };
@@ -30,9 +29,6 @@ const Slider = ({ data }) => {
   useEffect(() => {
     startSlider();
     slideRef.current.addEventListener("animationend", removeAnimation);
-    return () => {
-      clearInterval(slideInterval);
-    };
   }, []);
 
   const handleOnNextClick = () => {
@@ -67,6 +63,7 @@ const Slider = ({ data }) => {
             fill
             style={{ objectFit: "cover", borderRadius: "2rem" }}
             src={imageUrls[index]}
+            alt="image"
           />
         </div>
         <div className="px-[3rem] py-3 w-full flex flex-row items-center justify-between">
@@ -74,11 +71,11 @@ const Slider = ({ data }) => {
             onClick={handleOnPreviousClick}
             className="relative h-3/5 w-2/5"
           >
-            <Image height={800} width={400} src={left} />
+            <Image height={800} width={400} src={left} alt="left" />
           </button>
 
           <button onClick={handleOnNextClick} className="relative h-3/5 w-2/5">
-            <Image width={800} height={500} src={right} />
+            <Image width={800} height={500} src={right} alt="right" />
           </button>
         </div>
       </div>

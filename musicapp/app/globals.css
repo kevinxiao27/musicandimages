@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .fade-anim img {
-  animation: fadeAnim 1.0s ease-out;
+  animation: fadeAnim 0.3s ease-out;
 }
 @keyframes fadeAnim {
   from {
